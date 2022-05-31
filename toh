@@ -1,0 +1,174 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local X = Material.Load({
+	Title = "Yang Ware V2",
+	Style = 3,
+	SizeX = 500,
+	SizeY = 350,
+	Theme = "Dark",
+	ColorOverrides = {
+		MainFrame = Color3.fromRGB(235,235,235)
+	}
+})
+
+local Y = X.New({
+	Title = "Main"
+})
+
+local A = Y.Button({
+	Text = "Bypass Anti Cheat",
+	Callback = function()
+game.StarterGui:SetCore("SendNotification", {
+    Title    = "Yang Ware V2"; 
+    Text     = "Bypassed Lol"; 
+    Icon     = ""; 
+    Duration = 10;
+    Callback = bindableFunction;
+    Button1  = "Lol Ok";  
+    Button2  = "Lol No";
+})
+		        local reg = getreg()
+
+        for i, Function in next, reg do
+            if type(Function) == 'function' then
+                local info = getinfo(Function)
+
+                if info.name == 'kick' then
+                    if (hookfunction(info.func, function(...)end)) then
+                        print("succesfully hooked kick")
+                    else
+                        print("failed to hook kick")
+                    end
+                end
+            end
+        end
+
+        local playerscripts = game:GetService("Players").LocalPlayer.PlayerScripts
+
+        local script1 = playerscripts.LocalScript
+        local script2 = playerscripts.LocalScript2
+
+        local script1signal = script1.Changed
+        local script2signal = script2.Changed
+
+        for i, connection in next, getconnections(script1signal) do
+            connection:Disable()
+        end
+
+        for i, connection in next, getconnections(script2signal) do
+            connection:Disable()
+        end
+
+        script1:Destroy()
+        script2:Destroy()
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "That Was Sooo Hard To Bypass!!1!1 (no lol)"
+			})
+		end
+	}
+})
+
+local C = Y.Slider({
+	Text = "Speed",
+	Callback = function(v)
+		game:GetService("ReplicatedStorage").globalSpeed.Value = v
+game.StarterGui:SetCore("SendNotification", {
+    Title    = "Yang Ware V2"; 
+    Text     = "Boosted."; 
+    Icon     = ""; 
+    Duration = 1;
+    Callback = bindableFunction;
+    Button1  = "Lol Ok";  
+    Button2  = "Lol No";
+})
+	end,
+	Min = 16,
+	Max = 200,
+	Def = 17
+})
+
+local C = Y.Slider({
+	Text = "Jump Boost",
+	Callback = function(v)
+		game:GetService("ReplicatedStorage").globalJumps.Value = v
+game.StarterGui:SetCore("SendNotification", {
+    Title    = "Yang Ware V2"; 
+    Text     = "Boosted."; 
+    Icon     = ""; 
+    Duration = 1;
+    Callback = bindableFunction;
+    Button1  = "Lol Ok";  
+    Button2  = "Lol No";
+})
+	end,
+	Min = 0,
+	Max = 200,
+	Def = 1
+})
+
+local A = Y.Button({
+	Text = "Get All Tools",
+	Callback = function()
+game.StarterGui:SetCore("SendNotification", {
+    Title    = "Yang Ware V2"; 
+    Text     = "Got all tools"; 
+    Icon     = ""; 
+    Duration = 10;
+    Callback = bindableFunction;
+    Button1  = "Lol Ok";  
+    Button2  = "Lol No";
+})
+		        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
+            if v:IsA("Tool") then
+                v:Destroy()
+            end
+        end
+
+        wait() 
+
+        for i,v in pairs(game.ReplicatedStorage.Gear:GetDescendants()) do
+            if v:IsA("Tool") then
+                local CloneThings = v:Clone()
+                wait()
+                CloneThings.Parent = game.Players.LocalPlayer.Backpack
+            end
+        end
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "lol ez no money requried"
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Be God",
+	Callback = function()
+game.StarterGui:SetCore("SendNotification", {
+    Title    = "Yang Ware V2"; 
+    Text     = "God."; 
+    Icon     = ""; 
+    Duration = 10;
+    Callback = bindableFunction;
+    Button1  = "Lol Ok";  
+    Button2  = "Lol No";
+})
+        for i,v in pairs(Workspace:FindFirstChild("tower"):GetDescendants()) do
+            if v:IsA("BoolValue") and v.Name == "kills" then
+                v.Parent:Destroy()
+            end
+        end
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "GOD..."
+			})
+		end
+	}
+})
